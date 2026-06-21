@@ -3,7 +3,7 @@
 
 #define QUEUE_DEFAULT_SIZE 100
 
-struct queue
+struct Queue
 {
     int capacity;
     int size;
@@ -12,9 +12,9 @@ struct queue
     void **data;
 };
 
-queue *queue_init(void)
+Queue *queue_init(void)
 {
-    queue *q = malloc(sizeof(queue));
+    Queue *q = malloc(sizeof(Queue));
     q->capacity = QUEUE_DEFAULT_SIZE;
     q->size = 0;
     q->left = 0;
@@ -23,13 +23,13 @@ queue *queue_init(void)
     return q;
 }
 
-void queue_free(queue *q)
+void queue_free(Queue *q)
 {
     free(q->data);
     free(q);
 }
 
-void queue_push(queue *q, void *p)
+void queue_push(Queue *q, void *p)
 {
     if (q->size == q->capacity)
     {
@@ -52,7 +52,7 @@ void queue_push(queue *q, void *p)
     q->size++;
 }
 
-void *queue_pop(queue *q)
+void *queue_pop(Queue *q)
 {
     if (q->size <= 0)
     {
@@ -66,7 +66,7 @@ void *queue_pop(queue *q)
     return val;
 }
 
-void *queue_peek(const queue *q)
+void *queue_peek(const Queue *q)
 {
     if (q->size <= 0)
     {
@@ -76,7 +76,7 @@ void *queue_peek(const queue *q)
     return q->data[q->left];
 }
 
-bool queue_is_empty(const queue *q)
+bool queue_is_empty(const Queue *q)
 {
     return q->size <= 0;
 }

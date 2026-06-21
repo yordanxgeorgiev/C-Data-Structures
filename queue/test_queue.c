@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    queue *q = queue_init();
+    Queue *q = queue_init();
 
     assert(queue_is_empty(q));
 
