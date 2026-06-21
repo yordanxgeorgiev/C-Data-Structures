@@ -3,7 +3,7 @@
 
 int main()
 {
-    stack *s = stack_init();
+    Stack *s = stack_init();
 
     int a = 10, b = 20, c = 30;
 

@@ -1,16 +1,16 @@
 #ifndef STACK_H
 #define STACK_H
 
-#define STACK_DEFAULT_SIZE 100
+#include <stdbool.h>
 
-typedef struct stack stack;
+typedef struct Stack Stack;
 
-stack *stack_init(void);
-void stack_free(stack *s);
+Stack *stack_init(void);
+void stack_free(Stack *s);
 
-void stack_push(stack *s, void *p);
-void *stack_pop(stack *s);
-void *stack_peek(stack *s);
-int stack_is_empty(stack *s);
+void stack_push(Stack *s, void *p);
+void *stack_pop(Stack *s);
+void *stack_peek(const Stack *s);
+bool stack_is_empty(const Stack *s);
 
 #endif

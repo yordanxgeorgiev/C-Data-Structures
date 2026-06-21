@@ -1,30 +1,31 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "stack.h"
 
-struct stack
+#define STACK_DEFAULT_SIZE 100
+
+struct Stack
 {
     int capacity;
     int size;
     void **data;
 };
 
-stack *stack_init(void)
+Stack *stack_init(void)
 {
-    stack *s = malloc(sizeof(stack));
+    Stack *s = malloc(sizeof(Stack));
     s->capacity = STACK_DEFAULT_SIZE;
     s->data = malloc(s->capacity * sizeof(void *));
     s->size = 0;
     return s;
 }
 
-void stack_free(stack *s)
+void stack_free(Stack *s)
 {
     free(s->data);
     free(s);
 }
 
-void stack_push(stack *s, void *p)
+void stack_push(Stack *s, void *p)
 {
     if (s->size == s->capacity)
     {
@@ -35,7 +36,7 @@ void stack_push(stack *s, void *p)
     s->data[s->size++] = p;
 }
 
-void *stack_pop(stack *s)
+void *stack_pop(Stack *s)
 {
     if (s->size <= 0)
         return NULL;
@@ -43,7 +44,7 @@ void *stack_pop(stack *s)
     return s->data[--s->size];
 }
 
-void *stack_peek(stack *s)
+void *stack_peek(const Stack *s)
 {
     if (s->size <= 0)
         return NULL;
@@ -51,7 +52,7 @@ void *stack_peek(stack *s)
     return s->data[s->size - 1];
 }
 
-int stack_is_empty(stack *s)
+bool stack_is_empty(const Stack *s)
 {
     return s->size <= 0;
 }
