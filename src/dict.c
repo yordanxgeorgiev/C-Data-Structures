@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "dict.h"
-#include "lib/hash.h"
+#include "hash.h"
 
 #define DICT_DEFAULT_SIZE 128 // keep this a power of 2
 
